@@ -19,9 +19,9 @@
         } elseif($edad > 65){
             echo "Demasiado mayor para pasar";
         }
-        echo"<br>";
+        echo"<p>";
 
-        $fechaEntrada = strtotime("10-12-1994 12:01:00");
+        /*$fechaEntrada = strtotime("10-12-1994 12:01:00");
         $fechaActual = strtotime(date("d-m-Y H:i:00",time()));
         $edadActual = $fechaActual - $fechaEntrada;
         $edadCalculada = floor($edadActual / (365 * 24 * 60 * 60));
@@ -30,6 +30,18 @@
         } elseif($edadCalculada < 18){
             echo "No puedes pasar";
         } elseif($edadCalculada > 65){
+            echo "Demasiado mayor para pasar";
+        }*/
+
+        $fecha_nacimiento = new DateTime("1998-01-25");
+        $hoy = new DateTime();
+        $edad2 = $hoy->diff($fecha_nacimiento);
+
+        if($edad2->y >= 18 && $edad2->y < 65){
+            echo "Puedes pasar dentro";
+        } elseif($edad2->y < 18){
+            echo "No puedes pasar";
+        } elseif($edad2->y > 65){
             echo "Demasiado mayor para pasar";
         }
     ?>
