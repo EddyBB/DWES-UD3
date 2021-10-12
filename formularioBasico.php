@@ -11,7 +11,7 @@
 
     <?php
         $errorUsuario;
-        $errorContraseña;
+        $errorContrasenya;
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $usuario = "";
             $contrasenya = "";
@@ -28,38 +28,37 @@
                 echo"<br>";
             }
             //echo "el usuario $usuario tiene la contraseña $contrasenya";
-            /*$usuario = strip_tags($usuario);
-            echo $usuario;
-            echo"<br>";
-            $usuario = stripslashes($usuario);
-            echo $usuario;
-            echo"<br>";
-            $usuario = htmlspecialchars($usuario);
-            echo $usuario;*/
-            $validacion = preg_match("/^[a-zA-Z0-9_-]{8,}$/", $usuario);
-            $validacion2 = preg_match("/^[A-Z[a-z]{15}{0-9}]$/", $contrasenya);
-            if($validacion == true){
-            } else {
-                $errorUsuario = "usuario incorrecto";
-            }
-            if($validacion2 == true){
-            } else {
-                $errorContraseña = "contraseña incorrecto";
-            }
-        }
 
+
+      
+            if(!preg_match('/\w{8,}/', $usuario)){
+                $errorUsuario = "error usuario incorrecto";
+            }
+            if(!preg_match("/[A-Z][a-z]{15}[0-9]/", $contrasenya)){
+                $errorContrasenya = "error contraseña incorrecta";
+            }
+            
+            $usuario = strip_tags($usuario);
+            $usuario = stripslashes($usuario);
+            $usuario = htmlspecialchars($usuario);
+
+            $contrasenya = stripslashes($contrasenya);
+            $contrasenya = strip_tags($contrasenya);
+            $contrasenya = htmlspecialchars($contrasenya);
+    
+        }
     ?>
 
-    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
+    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="Post">
         <p>
             <label for="usuario">Usuario</label>
-            <input type="text" name="usuario"/>
-            <span style="color:red"><?php echo $errorUsuario?> </span>
+            <input type="text" name="usuario" value="<?php echo $usuario;?>"/>
+            <span style="color:red"><?php echo $errorUsuario;?> </span>
         </p>
         <p>
             <label for="contrasenya">Contraseña</label>
-            <input type="password" name="contrasenya"/>
-            <span style="color:red"><?php echo $errorContraseña ?></span>
+            <input type="password" name="contrasenya" value="<?php echo $contrasenya;?>"/>
+            <span style="color:red"><?php echo $errorContrasenya;?> </span>
         </p>
         <p>
            <input type="submit" name="enviar" value="Aceptar"/>
