@@ -45,14 +45,29 @@
                 echo "El campo direccion debe de estar rellenado";
                 echo"<br>";
             }
-            echo $instituto;
+            
             if(!preg_match('/IES/', $instituto)){
                 $errorInstituto = "error instituto debe empezar por IES";
             }
 
-            /*if(empty()){
+            if(isset($_POST["Wifi"])){
+            } elseif(isset($_POST["Cable"])){
 
-            }*/
+            } elseif(isset($_POST["Fibra"])){
+
+            } else{
+                echo "Ninguno de los campos radio ha sido seleccionado";
+                echo "<br>";
+            }
+
+            if(isset($_POST["camposCheckbox"])){
+                foreach($_POST["camposCheckbox"] as $valorCheckbox){
+                    echo " ". $valorCheckbox;
+                }
+                echo "<br>";
+            } else {
+                echo "Ninguno de los 4 checkbox ha sido activado";
+            }
         }
     ?>
 
@@ -77,7 +92,7 @@
                 <span style="color:red"></span>
             </p>
 
-            <input type="radio" id="Wifi" name="Wifi" value="Wifi" checked/>
+            <input type="radio" id="Wifi" name="Wifi" value="Wifi"/>
             <label for="Wifi">Wifi</label>
 
             <input type="radio" id="Cable" name="Wifi" value="Cable"/>
@@ -115,11 +130,11 @@
 
     <fieldset>
         <legend>Preferencias</legend>
-        <form> 
-            Historia<input type="checkbox" name="" value="1">
-            Geografía<input type="checkbox" name="" value="2">
-            Lengua<input type="checkbox" name=" " value="3">
-            Matemáticas<input type="checkbox" name="" value="4">
+        <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST"> 
+            Historia<input type="checkbox" name="camposCheckbox" value="1">
+            Geografía<input type="checkbox" name="camposCheckbox" value="2">
+            Lengua<input type="checkbox" name="camposCheckbox" value="3">
+            Matemáticas<input type="checkbox" name="camposCheckbox" value="4">
             <br>
 
             <textarea name="campoTextarea" placeholder="Inserte aquí el texto"></textarea>
