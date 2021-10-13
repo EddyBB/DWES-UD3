@@ -10,8 +10,8 @@
     <h1>Formulario Actividad Aula</h1>
 
     <?php
-        $errorUsuario;
-        $errorContrasenya;
+        $errorUsuario = " ";
+        $errorContrasenya=" ";
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $usuario = "";
             $contrasenya = "";
@@ -27,9 +27,6 @@
                 echo "El campo contraseña debe de estar rellenado";
                 echo"<br>";
             }
-            //echo "el usuario $usuario tiene la contraseña $contrasenya";
-
-
       
             if(!preg_match('/\w{8,}/', $usuario)){
                 $errorUsuario = "error usuario incorrecto";
@@ -49,7 +46,7 @@
         }
     ?>
 
-    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="Post">
+    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
         <p>
             <label for="usuario">Usuario</label>
             <input type="text" name="usuario" value="<?php echo $usuario;?>"/>
