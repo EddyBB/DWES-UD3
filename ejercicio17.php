@@ -49,6 +49,10 @@
             if(!preg_match('/IES/', $instituto)){
                 $errorInstituto = "error instituto debe empezar por IES";
             }
+
+            /*if(empty()){
+
+            }*/
         }
     ?>
 
