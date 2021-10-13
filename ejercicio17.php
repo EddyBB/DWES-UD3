@@ -14,10 +14,14 @@
             $apellido = " ";
             $direccion = " ";
             $instituto = " ";
+            $estudios = " ";
+            $texto = " ";
+
             $nombre = $_POST["nombre"];
             $apellido = $_POST["apellido"];
             $direccion = $_POST["direccion"];
             $instituto = $_POST["instituto"];
+            $estudios = $_POST["estudios"];
 
             $nombre = strip_tags($nombre);
             $nombre = stripslashes($nombre);
@@ -43,6 +47,16 @@
 
             if(empty($direccion)){
                 echo "El campo direccion debe de estar rellenado";
+                echo"<br>";
+            }
+
+            if(empty($instituto)){
+                echo "El campo instituto debe de estar rellenado";
+                echo"<br>";
+            }
+
+            if(empty($estudios)){
+                echo "El campo estudios debe de estar rellenado";
                 echo"<br>";
             }
             
@@ -109,7 +123,7 @@
 
             <p>
                 <label for="estudios">Estudios elegidos</label>
-                <input type="text" name="estudio" value=""/>
+                <input type="text" name="estudios" value=""/>
                 <span style="color:red"></span>
             </p>
 
@@ -137,7 +151,10 @@
             Matemáticas<input type="checkbox" name="camposCheckbox" value="4">
             <br>
 
-            <textarea name="campoTextarea" placeholder="Inserte aquí el texto"></textarea>
+            <textarea name="campoTextarea" placeholder="Inserte aquí el texto"
+                value="<?php $texto = strip_tags($texto);
+                             $texto = stripslashes($texto);
+                             $texto = htmlspecialchars($texto);?>"></textarea>
             <br>
             <input type="submit" value="Enviar">
         </form>
