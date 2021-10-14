@@ -35,6 +35,10 @@
             $direccion = stripslashes($direccion);
             $direccion = htmlspecialchars($direccion);
 
+            $texto = strip_tags($texto);
+            $texto = stripslashes($texto);
+            $texto = htmlspecialchars($texto);
+
             if(empty($nombre)){
                 echo "El campo nombre debe de estar rellenado";
                 echo"<br>";
@@ -151,10 +155,7 @@
             Matemáticas<input type="checkbox" name="camposCheckbox" value="4">
             <br>
 
-            <textarea name="campoTextarea" placeholder="Inserte aquí el texto"
-                value="<?php $texto = strip_tags($texto);
-                             $texto = stripslashes($texto);
-                             $texto = htmlspecialchars($texto);?>"></textarea>
+            <textarea name="campoTextarea" placeholder="Inserte aquí el texto"value="<?php echo $texto;?>"></textarea>
             <br>
             <input type="submit" value="Enviar">
         </form>
