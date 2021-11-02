@@ -32,7 +32,7 @@
                 echo"<br>";
             }
 
-            if(!preg_match('/[a-z]/', $poblacion)){
+            if(!preg_match('/[A-Za-z]/', $poblacion)){
                 $errorPoblacion = "Error, sólo se permite letras";
             }
 
@@ -85,8 +85,8 @@
             <textarea name="campoTextarea" placeholder="Descripción del municipio" value="<?php echo $texto;?>"></textarea>
             <br>
 
-            <input type="file" name="imagen" id="imagen"><br><br>
-            <button type="submit">Aceptar</button>
+            <input type="file" name="imagen" id="imagen"><br>
+            <button type="submit">Aceptar</button><br><br>
 
             <input type="submit" name = "enviar">
             <input type="reset" name = "reset">
